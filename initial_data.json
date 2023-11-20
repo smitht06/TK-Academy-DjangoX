@@ -13,41 +13,41 @@
 			"day": 1
 		}
 	},
-    {
-        "model": "attendance.dayofweek",
-        "pk": 3,
-        "fields": {
-            "day": 2
-        }
-    },
-    {
-        "model": "attendance.dayofweek",
-        "pk": 4,
-        "fields": {
-            "day": 3
-        }
-    },
-    {
-        "model": "attendance.dayofweek",
-        "pk": 5,
-        "fields": {
-            "day": 4
-        }
-    },
-    {
-        "model": "attendance.dayofweek",
-        "pk": 6,
-        "fields": {
-            "day": 5
-        }
-    },
-    {
-        "model": "attendance.dayofweek",
-        "pk": 7,
-        "fields": {
-            "day": 6
-        }
-    },
+	{
+		"model": "attendance.dayofweek",
+		"pk": 3,
+		"fields": {
+			"day": 2
+		}
+	},
+	{
+		"model": "attendance.dayofweek",
+		"pk": 4,
+		"fields": {
+			"day": 3
+		}
+	},
+	{
+		"model": "attendance.dayofweek",
+		"pk": 5,
+		"fields": {
+			"day": 4
+		}
+	},
+	{
+		"model": "attendance.dayofweek",
+		"pk": 6,
+		"fields": {
+			"day": 5
+		}
+	},
+	{
+		"model": "attendance.dayofweek",
+		"pk": 7,
+		"fields": {
+			"day": 6
+		}
+	},
 	{
 		"model": "attendance.teacher",
 		"pk": 1,
@@ -56,6 +56,86 @@
 			"first_name": "John",
 			"last_name": "Doe",
 			"email_address": "john.doe@example.com"
+		}
+	},
+	{
+		"model": "attendance.teacher",
+		"pk": 2,
+		"fields": {
+			"user": 3,
+			"first_name": "Jane",
+			"last_name": "Doe",
+			"email_address": "jane.doe@example.com"
+		}
+	},
+	{
+		"model": "attendance.teacher",
+		"pk": 3,
+		"fields": {
+			"user": 4,
+			"first_name": "John",
+			"last_name": "Smith",
+			"email_address": "john.smith@gmail.com"
+		}
+	},
+	{
+		"model": "attendance.teacher",
+		"pk": 4,
+		"fields": {
+			"user": 5,
+			"first_name": "Jane",
+			"last_name": "Smith",
+			"email_address": "jane.smith@examaple.com"
+		}
+	},
+	{
+		"model": "attendance.teacher",
+		"pk": 5,
+		"fields": {
+			"user": 6,
+			"first_name": "John",
+			"last_name": "Jones",
+			"email_address": "john.jones@example.com"
+		}
+	},
+	{
+		"model": "attendance.student",
+		"pk": 2,
+		"fields": {
+			"user": 1,
+			"first_name": "John",
+			"last_name": "Doe",
+			"email_address": "john.doe@student.example"
+		}
+	},
+	{
+		"model": "attendance.student",
+		"pk": 3,
+		"fields": {
+			"user": 3,
+			"first_name": "Jane",
+			"last_name": "Doe",
+			"email_address": "jane.doe@student.example"
+		}
+	},
+	{
+		"model": "attendance.student",
+		"pk": 4,
+		"fields": {
+			"user": 4,
+			"first_name": "John",
+			"last_name": "Smith",
+			"email_address": "john.smith@student.example"
+		}
+	},
+	{
+		"model": "attendance.student",
+		"pk": 5,
+		"fields": {
+			"user": 5,
+			"first_name": "Jane",
+			"last_name": "Smith",
+			"email_address": "jane.smith@examaple.com"
 		}
 	},
 	{
@@ -86,10 +166,80 @@
 		}
 	},
 	{
+		"model": "attendance.classgroup",
+		"pk": 2,
+		"fields": {
+			"teacher": 2,
+			"students": [2],
+			"level": 1,
+			"day_of_week": 2
+		}
+	},
+	{
+		"model": "attendance.classgroup",
+		"pk": 3,
+		"fields": {
+			"teacher": 3,
+			"students": [3],
+			"level": 1,
+			"day_of_week": 3
+		}
+	},
+	{
+		"model": "attendance.classgroup",
+		"pk": 4,
+		"fields": {
+			"teacher": 4,
+			"students": [4],
+			"level": 1,
+			"day_of_week": 4
+		}
+	},
+	{
+		"model": "attendance.classgroup",
+		"pk": 5,
+		"fields": {
+			"teacher": 5,
+			"students": [5],
+			"level": 1,
+			"day_of_week": 5
+		}
+	},
+	{
 		"model": "attendance.classsession",
 		"pk": 1,
 		"fields": {
 			"class_group": 1,
+			"start_time": "09:00",
+			"end_time": "10:00",
+			"date": "2023-01-01"
+		}
+	},
+	{
+		"model": "attendance.classsession",
+		"pk": 2,
+		"fields": {
+			"class_group": 2,
+			"start_time": "09:00",
+			"end_time": "10:00",
+			"date": "2023-06-01"
+		}
+	},
+	{
+		"model": "attendance.classsession",
+		"pk": 3,
+		"fields": {
+			"class_group": 3,
+			"start_time": "09:00",
+			"end_time": "10:00",
+			"date": "2023-08-29"
+		}
+	},
+	{
+		"model": "attendance.classsession",
+		"pk": 4,
+		"fields": {
+			"class_group": 4,
 			"start_time": "09:00",
 			"end_time": "10:00",
 			"date": "2023-01-01"
