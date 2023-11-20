@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% block content %}
+    <h1>Class sessions</h1>
+    {% for session in class_sessions %}
+        <a href="{% url 'class_sessions' pk=session.pk %}">
+            <p>{{ session }}</p>
+        </a>
+    {% endfor %}
+{% endblock %}

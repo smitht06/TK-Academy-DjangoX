@@ -1,0 +1,108 @@
+[
+	{
+		"model": "attendance.dayofweek",
+		"pk": 1,
+		"fields": {
+			"day": 0
+		}
+	},
+	{
+		"model": "attendance.dayofweek",
+		"pk": 2,
+		"fields": {
+			"day": 1
+		}
+	},
+    {
+        "model": "attendance.dayofweek",
+        "pk": 3,
+        "fields": {
+            "day": 2
+        }
+    },
+    {
+        "model": "attendance.dayofweek",
+        "pk": 4,
+        "fields": {
+            "day": 3
+        }
+    },
+    {
+        "model": "attendance.dayofweek",
+        "pk": 5,
+        "fields": {
+            "day": 4
+        }
+    },
+    {
+        "model": "attendance.dayofweek",
+        "pk": 6,
+        "fields": {
+            "day": 5
+        }
+    },
+    {
+        "model": "attendance.dayofweek",
+        "pk": 7,
+        "fields": {
+            "day": 6
+        }
+    },
+	{
+		"model": "attendance.teacher",
+		"pk": 1,
+		"fields": {
+			"user": 1,
+			"first_name": "John",
+			"last_name": "Doe",
+			"email_address": "john.doe@example.com"
+		}
+	},
+	{
+		"model": "attendance.student",
+		"pk": 1,
+		"fields": {
+			"user": 2,
+			"first_name": "Jane",
+			"last_name": "Doe",
+			"email_address": "jane.doe@example.com"
+		}
+	},
+	{
+		"model": "attendance.level",
+		"pk": 1,
+		"fields": {
+			"name": "Beginner"
+		}
+	},
+	{
+		"model": "attendance.classgroup",
+		"pk": 1,
+		"fields": {
+			"teacher": 1,
+			"students": [1],
+			"level": 1,
+			"day_of_week": 1
+		}
+	},
+	{
+		"model": "attendance.classsession",
+		"pk": 1,
+		"fields": {
+			"class_group": 1,
+			"start_time": "09:00",
+			"end_time": "10:00",
+			"date": "2023-01-01"
+		}
+	},
+	{
+		"model": "attendance.attendance",
+		"pk": 1,
+		"fields": {
+			"class_session": 1,
+			"student": 1,
+			"is_present": true,
+			"timestamp": "2023-01-01T09:00:00Z"
+		}
+	}
+]

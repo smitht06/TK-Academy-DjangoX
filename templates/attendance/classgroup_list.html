@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% block content %}
+    <h1>Class Groups</h1>
+    {% for group in classgroup_list %}
+        <a href="{% url 'class_sessions' pk=group.pk %}">
+            <p>{{ group }}</p>
+        </a>
+    {% endfor %}
+{% endblock %}
