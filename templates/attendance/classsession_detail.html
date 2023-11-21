@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+{% block content %}
+    <h1>Attendance</h1>
+    <h2>{{ classsession }}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_records %}
+                <tr>
+                    <td>{{ record.student }}</td>
+                    <td>{{ record.is_present }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

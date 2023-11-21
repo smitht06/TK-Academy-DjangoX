@@ -11,7 +11,7 @@
             /* Maintains the image aspect ratio and crops as needed */
         }
     </style>
-    <h1>Class sessions</h1>
+    <h1>{{ classgroup }} Sessions</h1>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             {% for session in class_sessions %}
-                <tr data-href="{% url 'class_sessions' session.pk %}"
+                <tr data-href="{% url 'attendance_records' pk=session.pk %}"
                     style="cursor: pointer">
                     <td>{{ session.date }}</td>
                     <td>{{ session.class_group }}</td>
@@ -32,14 +32,14 @@
                 </tr>
             {% endfor %}
         </table>
-    {% endblock %}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tableRows = document.querySelectorAll('tr[data-href]')
-            tableRows.forEach((row) => {
-                row.addEventListener('click', function() {
-                    window.location.href = row.getAttribute('data-href')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const tableRows = document.querySelectorAll('tr[data-href]')
+                tableRows.forEach((row) => {
+                    row.addEventListener('click', function() {
+                        window.location.href = row.getAttribute('data-href')
+                    })
                 })
             })
-        })
-    </script>
+        </script>
+    {% endblock %}

@@ -74,20 +74,45 @@ class ClassSession(models.Model):
     end_time = models.TimeField(null=True, blank=True)
     date = models.DateField(default=timezone.now)
 
+    def save(self, *args, **kwargs):
+        # Call the real save() method first to ensure the ClassSession instance is saved
+        super(ClassSession, self).save(*args, **kwargs)
+
+        # Check if the class group is set and then create attendance records
+        if self.class_group:
+            for student in self.class_group.students.all():
+                # Use get_or_create to avoid creating duplicate attendance records
+                Attendance.objects.get_or_create(
+                    class_session=self,
+                    student=student,
+                    defaults={"is_present": False},  # default values for new records
+                )
+
     def __str__(self):
         # Format the date (e.g., "Oct 05, 2023")
         date_str = self.date.strftime("%m/%d/%y") if self.date else "No Date"
 
         # Format the times (e.g., "07:00 PM")
-        start_time_str = self.start_time.strftime("%I:%M %p") if self.start_time else "No Start Time"
-        end_time_str = self.end_time.strftime("%I:%M %p") if self.end_time else "No End Time"
+        start_time_str = (
+            self.start_time.strftime("%I:%M %p") if self.start_time else "No Start Time"
+        )
+        end_time_str = (
+            self.end_time.strftime("%I:%M %p") if self.end_time else "No End Time"
+        )
 
         # Return the formatted string
         return f"{date_str} {self.class_group} {start_time_str} - {end_time_str}"
 
 
 class Attendance(models.Model):
-    class_session = models.ForeignKey(ClassSession, on_delete=models.CASCADE, null=True, blank=True)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True, blank=True)
+    class_session = models.ForeignKey(
+        ClassSession, on_delete=models.CASCADE, null=True, blank=True
+    )
+    student = models.ForeignKey(
+        Student, on_delete=models.CASCADE, null=True, blank=True
+    )
     is_present = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.student.__str__() + " " + self.class_session.__str__()
