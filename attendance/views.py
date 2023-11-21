@@ -1,14 +1,21 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Student, Teacher, ClassGroup, ClassSession, Attendance
+from .forms import ClassGroupCreationForm
 
 
 # Create your views here.
+class ClassGroupCreateView(CreateView):
+    model = ClassGroup
+    form_class = ClassGroupCreationForm
+    template_name = "attendance/classgroup_create.html"
+    success_url = "/attendance"
+
 class ClassGroupListView(ListView):
     model = ClassGroup
     template_name = "attendance/classgroup_list.html"
 
-
+    
 class ClassGroupDetailView(DetailView):
     model = ClassGroup
     template_name = "attendance/classgroup_detail.html"
