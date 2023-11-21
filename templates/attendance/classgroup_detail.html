@@ -1,14 +1,16 @@
 {% extends '_base.html' %}
 {% block content %}
-<style>
-    /* Add CSS styles for circular images */
-    .character-photo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%; /* Creates a circular clipping mask */
-      object-fit: cover; /* Maintains the image aspect ratio and crops as needed */
-    }
-  </style>
+    <style>
+        /* Add CSS styles for circular images */
+        .character-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            /* Creates a circular clipping mask */
+            object-fit: cover;
+            /* Maintains the image aspect ratio and crops as needed */
+        }
+    </style>
     <h1>Class sessions</h1>
     <table class="table table-striped">
         <thead>
@@ -21,7 +23,8 @@
         </thead>
         <tbody>
             {% for session in class_sessions %}
-            <tr data-href="{% url 'class_sessions' session.pk %}" style="cursor: pointer;">
+                <tr data-href="{% url 'class_sessions' session.pk %}"
+                    style="cursor: pointer">
                     <td>{{ session.date }}</td>
                     <td>{{ session.class_group }}</td>
                     <td>{{ session.start_time }}</td>
@@ -31,13 +34,12 @@
         </table>
     {% endblock %}
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const tableRows = document.querySelectorAll('tr[data-href]')
-          tableRows.forEach((row) => {
-            row.addEventListener('click', function () {
-              window.location.href = row.getAttribute('data-href')
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableRows = document.querySelectorAll('tr[data-href]')
+            tableRows.forEach((row) => {
+                row.addEventListener('click', function() {
+                    window.location.href = row.getAttribute('data-href')
+                })
             })
-          })
         })
-      </script>
-    
+    </script>

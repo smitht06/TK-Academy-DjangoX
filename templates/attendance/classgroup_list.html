@@ -1,9 +1,46 @@
 {% extends '_base.html' %}
 {% block content %}
+<style>
+    /* Add CSS styles for circular images */
+    .character-photo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%; /* Creates a circular clipping mask */
+      object-fit: cover; /* Maintains the image aspect ratio and crops as needed */
+    }
+  </style>
+
     <h1>Class Groups</h1>
-    {% for group in classgroup_list %}
-        <a href="{% url 'class_sessions' pk=group.pk %}">
-            <p>{{ group }}</p>
-        </a>
-    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Level</th>
+                <th>Teacher</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for group in classgroup_list %}
+                <tr data-href="{% url 'class_sessions' pk=group.pk %}" style="cursor: pointer;">
+                    <td>{{ group.day_of_week }}</td>
+                    <td>{{ group.level }}</td>
+                    <td>{{ group.teacher }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const tableRows = document.querySelectorAll('tr[data-href]')
+          tableRows.forEach((row) => {
+            row.addEventListener('click', function () {
+              window.location.href = row.getAttribute('data-href')
+            })
+          })
+        })
+      </script>
+
 {% endblock %}
