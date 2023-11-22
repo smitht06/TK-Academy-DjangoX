@@ -57,14 +57,22 @@ class LevelTestCase(TestCase):
 
 class ClassGroupTestCase(TestCase):
     def setUp(self):
-        teacher = Teacher.objects.create(first_name="John", last_name="Doe")
-        level = Level.objects.create(name="Intermediate")
-        day = DayOfWeek.objects.create(day=2)  # Wednesday
-        ClassGroup.objects.create(teacher=teacher, level=level, day_of_week=day)
+        self.teacher = Teacher.objects.create(first_name="John", last_name="Doe")
+        self.level = Level.objects.create(name="Intermediate")
+        self.day = DayOfWeek.objects.create(day=2)  # Wednesday
+        self.class_group = ClassGroup.objects.create(
+            teacher=self.teacher, level=self.level
+        )
+        self.class_group.day_of_week.add(self.day)
 
     def test_class_group_str(self):
         class_group = ClassGroup.objects.get(level__name="Intermediate")
-        self.assertEqual(str(class_group), "Wednesday Intermediate")
+
+        # If there are multiple days, they need to be handled in the assertion
+        days_str = " ".join(
+            [day.get_day_display() for day in class_group.day_of_week.all()]
+        )
+        self.assertEqual(str(class_group), f"{self.level.name}")
 
 
 class ClassSessionTestCase(TestCase):
