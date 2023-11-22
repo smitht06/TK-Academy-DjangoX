@@ -58,9 +58,7 @@ class ClassGroup(models.Model):
     )
     students = models.ManyToManyField(Student, blank=True)
     level = models.ForeignKey(Level, on_delete=models.CASCADE, null=True, blank=True)
-    day_of_week = models.ForeignKey(
-        DayOfWeek, on_delete=models.CASCADE, null=True, blank=True
-    )
+    day_of_week = models.ManyToManyField(DayOfWeek, blank=True)
 
     def __str__(self):
         return self.day_of_week.__str__() + " " + self.level.__str__()
@@ -116,3 +114,4 @@ class Attendance(models.Model):
 
     def __str__(self):
         return self.student.__str__() + " " + self.class_session.__str__()
+
