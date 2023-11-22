@@ -53,6 +53,7 @@ class Level(models.Model):
 
 
 class ClassGroup(models.Model):
+    name = models.CharField(max_length=50, default="")
     teacher = models.ForeignKey(
         Teacher, on_delete=models.CASCADE, null=True, blank=True
     )
@@ -61,7 +62,7 @@ class ClassGroup(models.Model):
     day_of_week = models.ManyToManyField(DayOfWeek, blank=True)
 
     def __str__(self):
-        return self.day_of_week.__str__() + " " + self.level.__str__()
+        return self.level.__str__()
 
 
 class ClassSession(models.Model):

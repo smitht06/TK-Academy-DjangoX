@@ -16,18 +16,23 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Day</th>
+                <th>Name</th>
                 <th>Level</th>
                 <th>Teacher</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for group in classgroup_list %}
                 <tr data-href="{% url 'class_sessions' pk=group.pk %}"
                     style="cursor: pointer">
-                    <td>{{ group.day_of_week }}</td>
+                    <td>{{ group.name }}</td>
                     <td>{{ group.level }}</td>
                     <td>{{ group.teacher }}</td>
+                    <td>
+                        <a href="{% url 'update_classgroup' pk=group.pk %}"
+                           class="btn btn-outline-secondary">Edit</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

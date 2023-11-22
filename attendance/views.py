@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from .models import Student, Teacher, ClassGroup, ClassSession, Attendance
-from .forms import ClassGroupCreationForm
+from .forms import ClassGroupCreationForm, ClassGroupUpdateForm
 
 
 # Create your views here.
@@ -9,6 +9,12 @@ class ClassGroupCreateView(CreateView):
     model = ClassGroup
     form_class = ClassGroupCreationForm
     template_name = "attendance/classgroup_create.html"
+    success_url = "/attendance"
+
+class ClassGroupUpdateView(UpdateView):
+    model = ClassGroup
+    form_class = ClassGroupUpdateForm
+    template_name = "attendance/classgroup_update.html"
     success_url = "/attendance"
 
 class ClassGroupListView(ListView):

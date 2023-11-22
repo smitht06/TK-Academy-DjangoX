@@ -4,7 +4,9 @@
     <form method="post" action="">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Create</button>
-        <a type="button" href="{% url "classgroup_list" %}" class="btn btn-outline-danger">Cancel</a>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a type="button"
+           href="{% url "classgroup_list" %}"
+           class="btn btn-outline-danger">Cancel</a>
     </form>
 {% endblock content %}
