@@ -17,7 +17,6 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Level</th>
                 <th>Teacher</th>
                 <th></th>
             </tr>
@@ -26,12 +25,13 @@
             {% for group in classgroup_list %}
                 <tr data-href="{% url 'class_sessions' pk=group.pk %}"
                     style="cursor: pointer">
-                    <td>{{ group.name }}</td>
-                    <td>{{ group.level }}</td>
+                    <td>{{ group }}</td>
                     <td>{{ group.teacher }}</td>
                     <td>
                         <a href="{% url 'update_classgroup' pk=group.pk %}"
                            class="btn btn-outline-secondary">Edit</a>
+                        <a href="{% url 'delete_classgroup' pk=group.pk %}"
+                            class="btn btn-outline-danger">Delete</a>
                     </td>
                 </tr>
             {% endfor %}

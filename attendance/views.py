@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from .models import Student, Teacher, ClassGroup, ClassSession, Attendance
 from .forms import ClassGroupCreationForm, ClassGroupUpdateForm
 
@@ -40,3 +40,17 @@ class ClassSessionDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["attendance_records"] = Attendance.objects.filter(class_session=self.object)
         return context
+    
+
+class ClassGroupDeleteView(DeleteView):
+    model = ClassGroup
+    template_name = "attendance/classgroup_delete.html"
+    success_url = "/attendance"
+
+class ClassSessionDeleteView(DeleteView):
+    model = ClassSession
+    template_name = "attendance/classsession_delete.html"
+    success_url = "/attendance"
+
+    
+

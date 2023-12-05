@@ -9,7 +9,7 @@ class ClassGroupCreationForm(forms.ModelForm):
         required=True,
     )
 
-    days_of_week = forms.ModelMultipleChoiceField(
+    day_of_week = forms.ModelMultipleChoiceField(
         queryset=DayOfWeek.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=True,
@@ -18,11 +18,10 @@ class ClassGroupCreationForm(forms.ModelForm):
     class Meta:
         model = ClassGroup
         fields = [
-            "name",
             "teacher",
             "students",
             "level",
-            "days_of_week",
+            "day_of_week",
         ]  # Include other fields as needed
 
 
@@ -33,7 +32,7 @@ class ClassGroupUpdateForm(forms.ModelForm):
         required=False,
     )
 
-    days_of_week = forms.ModelMultipleChoiceField(
+    day_of_week = forms.ModelMultipleChoiceField(
         queryset=DayOfWeek.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=True,
@@ -42,7 +41,6 @@ class ClassGroupUpdateForm(forms.ModelForm):
     class Meta:
         model = ClassGroup
         fields = [
-            "name",
             "teacher",
             "students",
             "level",
